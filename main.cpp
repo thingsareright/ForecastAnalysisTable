@@ -1,13 +1,10 @@
 #include "head.h"
 #include "apart_from.h"
 #include "first.h"
-
 #include "follow.h"
-
 #include "table.h"
-
 #include "judge.h"
-
+#include "show.h"
 
 int main(int argc, char const *argv[])
 {
@@ -25,27 +22,20 @@ int main(int argc, char const *argv[])
 	printf("%s\n", ter_symbol);
 	printf("终结符：\n");
 	printf("%s\n",non_ter);
-	printf("C的终结符：\n");
-	int k = get_ter('C');
-	printf("C的FIRST集\n");
-	for(i=0; i<sizeOfString(first_set[k]); i++)
-		printf("%c ", first_set[k][i]);
-	k = get_ter('C');
+	
 	printf("\n");
-	printf("C的FOLLOW集\n");
-	for(i=0; i<sizeOfString(follow_set[k]); i++)
-		printf("%c ", follow_set[k][i]);
+	
 	printf("\n");
 	getTable();
-	for (i = 0; i < sizeOfString(ter_symbol); ++i)
-	{
-		for (j = 0; j < sizeOfString(non_ter) + 1; ++j)
-		{
-			printf("%d ", M[i][j]);
-		}
-		printf("\n");
-	}
+	
 	scanf("%s", inter_symbol);
+	printf("\n");
+	showFirst();
+	printf("\n");
+	showFollow();
+	printf("\n");
+	showForecast();
+	printf("\n");
 	Judge();
 	return 0;
 }

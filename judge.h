@@ -10,7 +10,6 @@ void Judge()
 	char print[100];
 	top = 1;
 	x = 0;
-	printf("  %d          ", step++);
 	for(l=0; l<=top; l++)
 		printf("%c", stack[l]);
 	printf("\n");				
@@ -27,10 +26,21 @@ void Judge()
 			{
 				x ++;	//终结符匹配上了
 				top --;
-				printf("Judge:28 %c\n");
-
-				for(l=0;l<=top;l++)
+				int step = 0;	//输出格式用
+				for(l=0;l<=top;l++){
 					printf("%c", stack[l]);
+					step ++;
+				}
+				for(step;step<=12;step++)
+					printf(" ");
+
+				step = 0;
+				for(l=x;l<=sizeOfString(inter_symbol);l++){
+					printf("%c", inter_symbol[l]);
+					step ++;
+				}
+				for(step;step<=12;step++)
+					printf(" ");
 				printf("\n");
 			} else {
 				break;	//其实吧，就是错了，终结符没对上
@@ -56,10 +66,11 @@ void Judge()
 				}
 				else 
 				{
+					//显示要代替的字符串
+					printf("%s\n", form[M[col][row]].formula);
 					//将要代替的字符串逆序入栈
 					for(i = sizeOfString(form[M[col][row]].formula)-2; i>=3;i--)
 					{
-						printf("Judge:57 %c\n", form[M[col][row]].formula[i]);
 						stack[top++] = form[M[col][row]].formula[i];
 					}
 					top --;
